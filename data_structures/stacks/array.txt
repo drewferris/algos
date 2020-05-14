@@ -1,0 +1,3 @@
+LIFO last in first out
+can be used with an array with
+var stack = [], stack.push(), stack.pop()
