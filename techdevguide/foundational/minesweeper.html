@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    function buildGrid(grid, body) {
+      for (var i = 0; i < grid.length; i++) {
+        var row = document.createElement("div");
+        row.style.display = "flex";
+        row.style.flexDirection = "row";
+        for (var j = 0; j < grid[i].length; j++) {
+          var cell = document.createElement("div");
+          cell.style.width = "20px";
+          cell.style.height = "20px";
+          cell.style.border = "black 1px solid";
+          cell.style.backgroundColor = "grey";
+          cell.setAttribute("id", `loc-${i}-${j}`);
+          cell.setAttribute("row", i);
+          cell.setAttribute("col", j);
+          cell.setAttribute("value", grid[i][j]);
+          row.append(cell);
+        }
+        body.append(row);
+      }
+    }
+
+    function evaluate(val) {
+      if (typeof val === "number" && val !== 9) {
+        return true;
+      }
+      return false;
+    }
+
+    function revealCells(grid, row, col) {
+      var cell = document.getElementById(`loc-${row}-${col}`);
+      if (grid[row][col] !== 9) {
+        cell.style.backgroundColor = "white";
+        if (grid[row][col] === 0) {
+          grid[row][col] = false;
+          if (grid[row - 1] && evaluate(grid[row - 1][col]))
+            revealCells(grid, row - 1, col);
+          if (grid[row - 1] && evaluate(grid[row - 1][col - 1]))
+            revealCells(grid, row - 1, col - 1);
+          if (grid[row - 1] && evaluate(grid[row - 1][col + 1]))
+            revealCells(grid, row - 1, col + 1);
+          if (grid[row + 1] && evaluate(grid[row + 1][col]))
+            revealCells(grid, row + 1, col);
+          if (grid[row + 1] && evaluate(grid[row + 1][col - 1]))
+            revealCells(grid, row + 1, col - 1);
+          if (grid[row + 1] && evaluate(grid[row + 1][col + 1]))
+            revealCells(grid, row + 1, col + 1);
+          if (evaluate(grid[row][col - 1])) revealCells(grid, row, col - 1);
+          if (evaluate(grid[row][col + 1])) revealCells(grid, row, col + 1);
+        } else {
+          grid[row][col] = false;
+          cell.textContent = cell.getAttribute("value");
+        }
+      }
+    }
+
+    window.addEventListener("load", function () {
+      var body = document.querySelector("body");
+      var grid;
+      body.addEventListener("click", function (event) {
+        if (event.target.type === "submit") {
+          var input = document.querySelector("input");
+          grid = JSON.parse(input.value);
+          buildGrid(grid, body);
+        }
+        if (
+          event.target.nodeName === "DIV" &&
+          event.target.getAttribute("value")
+        ) {
+          var value = event.target.getAttribute("value");
+          event.target.style.backgroundColor = "white";
+          if (value === "9") {
+            event.target.textContent = "X";
+            var youLose = document.createElement("div");
+            youLose.textContent = "You lose!";
+            youLose.style.color = "red ";
+            body.append(youLose);
+          } else if (value === "0") {
+            var row = Number(event.target.getAttribute("row"));
+            var col = Number(event.target.getAttribute("col"));
+            revealCells(grid, row, col);
+          } else {
+            event.target.textContent = value;
+          }
+        }
+      });
+    });
+  </script>
+  <body>
+    <label>grid</label><input /><button>add</button>
+  </body>
+</html>
