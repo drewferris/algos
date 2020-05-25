@@ -1,0 +1,35 @@
+nodes and connections
+used for social networks, location/mapping, routing algorithms, visual hierarchy, file system optimizations, recommendations
+
+vertex: a node
+edge: connection between nodes
+weighted/unweighted: values assigned to distances between vertices
+directed/undirected: directions assigned to distances between vertices
+
+adjacency matrix is a 2x2 matrix with values for each relations ship between vertices, either 1 or 0 indicating a connection, each node is listed on x and y axis and if there is a 1 at say [3, 4] that means there is a connection between nodes 3 and 4, as would [4, 3] also indicate
+
+adjacency list stores each vertex in an array, where the index of the vertex is an array itself containing all the vertices it has a connection to, can also be stored in a hashmap
+
+differences and big 0
+
+V -> number of vertices
+V -> number of edges
+
+operation           adjacency list        adjacency matrix
+
+add vertex          O(1)                  O(V^2)
+add edge            O(1)                  O(1)
+remove vertex       O(V + E)              O(V^2)
+remove edge         O(E)                  O(1)
+query               O(V + E)              O(1)
+storage             O(V + E)              O(V^2)
+
+adjacency list
+  - can take up less space (in sparse graphs)
+  - faster to iterate over all the edges
+  - can be slower to lookup specific edge
+
+adjacency matrix
+  - takes up more space (in sparse graphs)
+  - slower to iterate over all edges
+  - faster to lookup specific edge
