@@ -168,3 +168,10 @@ class SinglyLinkedList {
     return this;
   }
 }
+
+const ll = new SinglyLinkedList();
+ll.push(1);
+ll.push(2);
+ll.push(3);
+ll.push(4);
+ll.push(5);
