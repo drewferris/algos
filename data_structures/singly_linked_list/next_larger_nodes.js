@@ -3,6 +3,7 @@ var nextLargerNodes = function(head) {
     if (!head.next) return[0];
 
     const arr = [];
+    
     while (head) {
         arr.push(head.val);
         head = head.next;
@@ -21,5 +22,3 @@ var nextLargerNodes = function(head) {
     return ret;
 };
 
-Input: [2,1,5]
-Output: [5,5,0]
