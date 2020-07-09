@@ -1,37 +1,37 @@
 function longestSubarray(nums, limit) {
-    let count = 0,
-        result = 0,
-        current = [],
-        min = Number.MAX_SAFE_INTEGER,
-        max = Number.MIN_SAFE_INTEGER;
+  let count = 0,
+    result = 0,
+    current = [],
+    min = Number.MAX_SAFE_INTEGER,
+    max = Number.MIN_SAFE_INTEGER
 
-    for (let i = 0; i < nums.length; i++) {
-        const val = nums[i];
-        
-        current.push(val);
+  for (let i = 0; i < nums.length; i++) {
+    const val = nums[i]
 
-        if (current.length < result) continue;
+    current.push(val)
 
-        min = Math.min(min, val);
-        max = Math.max(max, val);
+    if (current.length < result) continue
 
-        let diff = Math.abs(min - max);
+    min = Math.min(min, val)
+    max = Math.max(max, val)
 
-        if (diff <= limit) {
-            count = current.length;
-        } else {
-            const removed = current.shift();
+    let diff = Math.abs(min - max)
 
-            if (removed === min) {
-                min = Math.min(...current);
-            } else {
-                max = Math.max(...current);
-            }
-        }
+    if (diff <= limit) {
+      count = current.length
+    } else {
+      const removed = current.shift()
 
-        result = Math.max(result, count);
+      if (removed === min) {
+        min = Math.min(...current)
+      } else {
+        max = Math.max(...current)
+      }
     }
 
-    return result;
+    result = Math.max(result, count)
+  }
+
+  return result
 }
 
