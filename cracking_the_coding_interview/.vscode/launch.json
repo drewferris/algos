@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\linked_lists\\partition.js"
+      "program": "${workspaceFolder}\\linked_lists\\sum_lists.js"
     }
   ]
 }
