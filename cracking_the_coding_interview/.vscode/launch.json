@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\arrays_and_strings\\string_compression.js"
+      "program": "${workspaceFolder}\\linked_lists\\partition.js"
     }
   ]
 }
