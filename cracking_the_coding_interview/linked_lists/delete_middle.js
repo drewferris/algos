@@ -1,5 +1,5 @@
-function Node(val, next) {
-  this.val = (val === undefined ? 0 : val);
+function Node(data, next) {
+  this.data = (data === undefined ? 0 : data);
   this.next = (next === undefined ? null : next);
 }
 
@@ -8,7 +8,7 @@ function Node(val, next) {
 const deleteMiddle = n => {
   if (n === null || n.next === null) return false;
   let next = n.next;
-  n.val = next.val;
+  n.data = next.data;
   n.next = next.next;
   return;
 }

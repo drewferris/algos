@@ -1,5 +1,5 @@
-function Node(val, next) {
-	this.val = val === undefined ? null : val;
+function Node(data, next) {
+	this.data = data === undefined ? null : data;
 	this.next = next === undefined ? null : next;
 }
 
@@ -9,7 +9,7 @@ const partition = (node, x) => {
 	while (node !== null) {
 		let next = node.next;
 		node.next = null;
-		if (node.val < x) {
+		if (node.data < x) {
 			if (!beforeStart) {
 				beforeStart = node;
 				beforeEnd = beforeStart;
@@ -43,16 +43,16 @@ const partition2 = (node, x) => {
 	while (node !== null) {
 		let next = node.next;
 
-		if (node.val < x) {
-			if (!head.val) {
-				head.val = node.val;
+		if (node.data < x) {
+			if (!head.data) {
+				head.data = node.data;
 			} else {
 				node.next = head;
 			}
 			head = node;
 		} else {
-			if (!tail.val) {
-				tail.val = node.val;
+			if (!tail.data) {
+				tail.data = node.data;
 			} else {
 				tail.next = node;
 			}

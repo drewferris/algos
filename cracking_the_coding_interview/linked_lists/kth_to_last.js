@@ -1,5 +1,5 @@
-function Node(val, next) {
-  this.val = (val === undefined ? 0 : val);
+function Node(data, next) {
+  this.data = (data === undefined ? 0 : data);
   this.next = (next === undefined ? null : next);
 }
 

@@ -1,5 +1,5 @@
-function Node(val, next) {
-  this.val = (val === undefined ? 0 : val);
+function Node(data, next) {
+  this.data = (data === undefined ? 0 : data);
   this.next = (next === undefined ? null : next);
 }
 
@@ -9,8 +9,8 @@ const removeDuplicates = head => {
       prev;
 
   while (curr !== null) {
-    if (!map.get(curr.val)) {
-      map.set(curr.val, true);
+    if (!map.get(curr.data)) {
+      map.set(curr.data, true);
       prev = curr;
     } else {
       prev.next = curr.next;
@@ -27,7 +27,7 @@ const noBuffer = head => {
   while (current !== null) {
     let runner = current;
     while (runner.next !== null) {
-      if (runner.next.val == current.val) {
+      if (runner.next.data == current.data) {
         runner.next = runner.next.next;
       } else {
         runner = runner.next;

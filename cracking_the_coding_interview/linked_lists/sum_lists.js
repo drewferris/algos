@@ -1,5 +1,5 @@
-function Node(val, next) {
-	this.val = val === undefined ? null : val;
+function Node(data, next) {
+	this.data = data === undefined ? null : data;
 	this.next = next === undefined ? null : next;
 }
 
@@ -15,27 +15,27 @@ const sumLists = (node1, node2) => {
 		sum;
 	while (node1 !== null && node2 !== null) {
 		if (node1 && node2) {
-			sum = node1.val + node2.val + carry;
+			sum = node1.data + node2.data + carry;
 			if (sum < 10) {
 				if (!sumList) {
 					sumList = new Node(sum);
 					runner = sumList;
 				} else {
-					runner.val = sum;
+					runner.data = sum;
 				}
 			} else {
 				if (!sumList) {
 					sumList = new Node(sum % 10);
 					runner = sumList;
 				} else {
-					runner.val = sum % 10;
+					runner.data = sum % 10;
 				}
 				carry = 1;
 			}
 		} else if (!node2) {
-			runner.val = node1.val;
+			runner.data = node1.data;
 		} else if (!node1) {
-			runner.val = node2.val;
+			runner.data = node2.data;
 		}
 		if (node1.next || node2.next) {
 			let newNode = new Node();
@@ -56,11 +56,11 @@ const addLists = (l1, l2, carry = 0) => {
 
 	let result = new Node(),
 		value = carry;
-	if (l1 !== null) value += l1.val;
-	if (l2 !== null) value += l2.val;
+	if (l1 !== null) value += l1.data;
+	if (l2 !== null) value += l2.data;
 
 	// second digit of number
-	result.val = value % 10;
+	result.data = value % 10;
 
 	// Recurse
 	if (l1 !== null || l2 !== null) {
@@ -113,14 +113,14 @@ const addListsHelper = (l1, l2) => {
   let sum = addListsHelper(l1.next, l2.next);
 
   // Add carry to current data
-  let val = sum.carry + l1.val + l2.val;
+  let data = sum.carry + l1.data + l2.data;
 
   // Insert sum so far, and the carry value
-  let full_result = insertBefore(sum.sum, val % 10);
+  let full_result = insertBefore(sum.sum, data % 10);
 
   // Return sum so far, and the carry value
   sum.sum = full_result;
-  sum.carry = Math.floor(val / 10);
+  sum.carry = Math.floor(data / 10);
   return sum;
 }
 
