@@ -1,0 +1,7 @@
+Uses FIFO (first in first out) ordering. It uses the operations:
+    - add(item): Add an item to the end of the list.
+    - remove(): Remove the first item of the list.
+    - peek(): Returns the top of the queue.
+    - isEmpty(): Return true if queue is empty.
+
+Usefult in implementing BFS (breadth first search) or a cache. In BFS, a queue is used to store a list of nodes needed to process. Each time a node is processed, adjacent nodes are added to the queue at the back. Thus the nodes are processed in the order that they are viewed.
