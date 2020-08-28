@@ -12,3 +12,4 @@ const deleteMiddle = n => {
   n.next = next.next;
   return;
 }
+

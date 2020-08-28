@@ -1,0 +1,46 @@
+Trees:
+  - A data structure composed of nodes.
+  - Each tree has a root node.
+  - The root node has zero or more child nodes.
+  - Each child has zero or more child nodes, and so on.
+  - It cannot contain cycles.
+  - Nodes may or may not be in any particular order.
+  - Nodes can have any data type as value.
+  - May or may not have links back to their parent nodes.
+  - Simple definition for node:
+    class Node {
+      constructor(val) {
+        this.name = val;
+        this.children = [];
+      }
+    }
+  - Simple definition for tree:
+    class Tree {
+      constructor(root) {
+        this.root = root;
+      }
+    }
+
+Trees vs. Binary Trees
+  - Binary is a tree where each node has up to two children.
+  - Not all trees are binary trees.
+  - A node is called a leaf node if it has no children.
+
+Binary Tree vs. Search Tree
+  - In a binary search tree, for all nodes n, all left descendents <= n < all right descendents
+
+Balanced vs. Unbalanced
+  - Does not have to be exactly equal amounts of nodes on each side, just balanced enough to ensure O(log n) times for insert and find.
+  - Examples are:
+    - red-black trees
+    - AVL trees
+
+Complete Binary Trees
+  - Every level of the tree is fully filled except for the last level and last level is filled from left to right.
+
+Full Binary Trees
+  - Every node has zero or two children.
+
+Perfect Binary Trees
+  - Full and complete, all leaf nodes are at the same level and this level has the maximum number of nodes.
+
