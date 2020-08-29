@@ -1,0 +1,6 @@
+Tries (Prefix Trees)
+    - A trie is a variant of n-ary tree where characters are stored at nodes.
+    - The trie can be used to store the entire (English or other) language.
+    - Nice because provides quick lookups for prefixes to see if any given string is a prefix.
+    - * indicates that the path is a complete word.
+    - Each node can have up to the number of characters in the alphabet + 1.

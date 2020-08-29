@@ -1,0 +1,14 @@
+Binary Heaps (Min-Heaps and Max-Heaps)
+    - A min-heap is a complete binary tree, each node smaller than its children.
+    - The root is the minimum value of the tree.
+    - Two key operations:
+        - insert:
+            - Insert into the right most spot at the bottom.
+            - Then fix the tree swapping new element with its parent, until proper spot is found (Bubbling up the minimum element). 
+            - Takes O(log n) time.
+        - extract_min:
+            - Min element is easy to find since it is at the top.
+            - Swap it with the last element of the heap. 
+            - Bubble down the top element with its children until the minimum heap property is restored.
+            - When choosing between left and right child to swap with take the smaller node.
+    - A max-heap tree is the same but just the opposite where the root is the max value and all children less than it. 

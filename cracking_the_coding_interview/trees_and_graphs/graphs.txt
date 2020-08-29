@@ -1,0 +1,48 @@
+Graphs:
+    - A tree is a type of graph but not all graphs are trees.
+    - A graph is a collection of nodes with edges between (some of) them.
+    - Graphs can be either directed or undirected. 
+    - Directed edges are like a one way street whereas undirected are like a two way street.
+    - The graph might consist of multiple isolated subgraphs.
+    - A "connected graph" is where there is a path between every one of the vertices.
+    - A graph can have cycles, an "acyclic" graph does not have any.
+    - Two ways to represent a graph:
+        - Adjacency List:
+            - Most common way to represent a graph.
+            - Every vertex (node) stores a list of adjacent vertices.
+            - In an undirected graph, an edge like (a, b) would be stored twice: once in a's adjacent vertices and b's.
+            - Simple definition:
+                class Graph {
+                    constructor() {
+                        this.nodes = [];
+                    }
+                }
+
+                class Node {
+                    constructor(name) {
+                        this.name = name;
+                        this.children = [];
+                    }
+                }
+            - Graph class is used because as opposed to a tree you cannot reach all the nodes from a single node.
+            - An array or hashtable can store the adjacency list.
+        - Adjacency Matrices:
+            - An NxN boolean matrix where N is the number of nodes.
+            - A true value at matrix[i][j] indicates an edge from i to j.
+            - In a undirected graph, the matrix will be symmetric. In a directed graph it will not be.
+        - The same algorithms that can be used on adjacency lists (breadth first search, etc.) can be used on adjacency matrices, but they will be less efficient.
+        - In an adjacency list you can simply iterate through a nodes neighbors.
+        - In an adjacency matrix you need to iterate through the entire matrix to find a node's neighbors.
+
+Graph Search:
+    - Two most common ways to search a graph are depth-first search and breadth-first search.
+    - In depth-first search (DFS), you start at the root (or a random node) and explore each branch completely before moving onto the next branch. You go deep first before wide, hence the name "depth-first".
+    - In breadth-first search (BFS), you start at the root (or a random node) and explore each neighbor before going to any of their children. You go wide before deep, hence the name "breadth-first".
+    - DFS is used when you want to visit every node in the graph.
+    - BFS is used when you want to get the shortest path to a node. 
+    - Pre-order tree traversal can be considered as a form of DFS. The difference is that when implementing for a graph, you must keep track of which nodes you have visited in order to not get stuck in a loop.
+    - Bidirectional search is used to find the shortest path between a source and destination nodes. Operates by running two BFS from each node and once they collide you have found the path.
+    - Ex. Consider a graph where every node has at most k adjacent nodes and the shortest path from nodes s to t has a length d.
+        - In traditional BFS at each level you search k nodes and to find the node you are looking for you will do this d times. So that would be O(k^d).
+        - In bidirectional search, two searches will collide at approximately d/2 levels. The search from s visits about k^(d/2) nodes, as does t. So that is 2k^(d/2) or O(k^d/2).
+    
