@@ -15,6 +15,27 @@ class Node {
     }
 }
 
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
+    }
+
+    add(val) {
+        this.size += 1;
+        if (this.head === null) {
+            this.head = val;
+            return;
+        }
+
+        let curr = this.head;
+        while (curr !== null) {
+            curr = curr.next;
+        }
+        curr = new Node(val);
+    }
+}
+
 const createMinimalBST = (arr, start = 0, end = arr.length) => {
     if (end < start) return null;
 
@@ -54,6 +75,43 @@ const getDepths = (node, depths = {}, level = 0) => {
         if (node.right) getDepths(node.right, depths, level);
     }
     return depths;
+};
+
+// Cracking the Code Interview Solution: more or less the same as the above only optimized to remove final populating of linked lists. DFS with recursion.
+
+const createLevelLinkedList = (root, lists = [], level = 0) => {
+    if (root === null) return; // base case
+
+    let list;
+    if (lists.length === level) {
+        // Level not contained in list
+        list = new LinkedList();
+        // Levels are always traversed in order. So, if this is the first time you have visited level i, you must have seen levels 0 through i - 1. You can therefore safely add the level at the end.
+        lists.push(list);
+    } else {
+        list = lists[level];
+    }
+    list.add(new Node(root)); // Method would need to be written for this.
+    createLevelLinkedList(root.left, lists, level + 1);
+    createLevelLinkedList(root.right, lists, level + 1);
+};
+
+// Cracking the Code Interview Solution #2: BFS - below solution needs refactor work
+
+const createLevelLinkedListBFS = root => {
+    let result = [],
+        current = new LinkedList();
+    if (root !== null) current.add(new Node(root));
+    while (current.size > 0) {
+        result.push(current) // Add previous level
+        let parents = current; // Go to the next level
+        current = new LinkedList();
+        for (const parent of parents) {
+            if (parent.left !== null) current.add(parent.left);
+            if (parent.right !== null) current.add(parent.right);
+        }
+    }
+    return result;
 };
 
 let arr = [1, 2, 3, 4, 5, 6, 7],

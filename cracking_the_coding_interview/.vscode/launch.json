@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/trees_and_graphs/interview_questions/list_of_depths.js"
+            "program": "${workspaceFolder}/trees_and_graphs/interview_questions/build_order.js"
         }
     ]
 }
