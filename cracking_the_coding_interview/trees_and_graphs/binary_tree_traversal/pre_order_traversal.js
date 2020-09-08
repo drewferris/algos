@@ -25,3 +25,10 @@ node.right = new Node(10);
 node.right.right = new Node(20);
 
 preOrderTraversal(node);
+
+// 8
+// 4
+// 2
+// 6
+// 10
+// 20

@@ -1,0 +1,1 @@
+Dynamic programming is a matter of taking a recursibe algorithm and finding the overlapping subproblems (repeated calls) and cacheing them using memoization for future recursive calls.

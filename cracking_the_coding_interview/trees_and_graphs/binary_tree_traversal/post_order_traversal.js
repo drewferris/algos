@@ -24,3 +24,10 @@ node.right = new Node(10);
 node.right.right = new Node(20);
 
 postOrderTraversal(node);
+
+// 2
+// 6
+// 4
+// 20
+// 10
+// 8

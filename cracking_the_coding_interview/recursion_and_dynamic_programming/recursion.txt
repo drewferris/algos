@@ -1,0 +1,7 @@
+How to approach, three methods: bottom-up, top-down and half-and-half.
+
+Bottom-Up Approach: Figure out how to solve the problem for one case, then two and move up from there.
+Top-down Approach: Think about how you can divide the problem into N sub problems.
+Half-and-half Approach: Divide the data into halves and proceed from there.
+
+Recursive vs Iterative: Recursion can be space expensive and all recursion problems can be solved iteratively, so it is worth it to pause before deciding on recursion and seeing if an iterative solution can be found.
